@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/BubbleVision/bubble_imitator_player_sprite.gd" id="7_ffe4s"]
 [ext_resource type="Script" path="res://Scripts/BubbleVision/masking_sprite_happy.gd" id="8_d3b51"]
 [ext_resource type="Texture2D" uid="uid://crl8lnkhc6tsj" path="res://test/test_evil_world.webp" id="8_o8cot"]
-[ext_resource type="Shader" path="res://test/test_evil_world.gdshader" id="8_ri6ld"]
+[ext_resource type="Shader" path="res://Scripts/BubbleVision/evil_world.gdshader" id="8_ri6ld"]
 [ext_resource type="Script" path="res://Scripts/BubbleVision/masking_sprite_evil.gd" id="12_t6chf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_usck8"]

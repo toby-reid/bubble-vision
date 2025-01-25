@@ -112,7 +112,7 @@ position = Vector2(320, 180)
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("4_48dbb")
-metadata/next_room = "Level0"
+metadata/next_room = "Level1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NextRoom/Area2D"]
 shape = SubResource("RectangleShape2D_oq8rm")
