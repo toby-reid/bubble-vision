@@ -7,5 +7,6 @@ func _ready() -> void:
 	host = $"../../../../PlayerCharacter/Bubble/Sprite2D"
 
 func _physics_process(_delta: float) -> void:
-	rotation = host.rotation
-	scale = host.scale
+	if host != null:
+		rotation = host.rotation
+		scale = host.scale

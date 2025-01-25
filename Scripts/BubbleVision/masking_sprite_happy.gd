@@ -7,7 +7,7 @@ extends Sprite2D
 func _ready() -> void:
 	mask_viewport = $"../../SubViewport"
 	material = ShaderMaterial.new()
-	material.shader = load("res://test/test_happy_world.gdshader")
+	material.shader = load("res://Scripts/BubbleVision/happy_world.gdshader")
 
 func _process(_delta):
 	var mask_texture = mask_viewport.get_texture()

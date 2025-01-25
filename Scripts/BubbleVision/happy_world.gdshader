@@ -8,7 +8,7 @@ void fragment() {
     float mask_value = texture(mask_texture, mask_uv).r;
 
     // If the mask texture is active at this pixel, discard
-    if (mask_value > 0.5) {
+    if (mask_value <= 0.5) {
         discard;
     }
 }
