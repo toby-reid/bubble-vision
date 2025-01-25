@@ -1,0 +1,105 @@
+[gd_resource type="SpriteFrames" load_steps=17 format=3 uid="uid://crxouodoepki2"]
+
+[ext_resource type="Texture2D" uid="uid://bj8qno5rlhch5" path="res://Art/Characters/Main/mc_ducking_0.png" id="1_3jb2c"]
+[ext_resource type="Texture2D" uid="uid://dg80ogbi2tvrm" path="res://Art/Characters/Main/mc_ducking_1.png" id="2_xcgu6"]
+[ext_resource type="Texture2D" uid="uid://cvrbq0aeq0ke6" path="res://Art/Characters/Main/mc_falling_0.png" id="3_nllfi"]
+[ext_resource type="Texture2D" uid="uid://ccll66gudc6sn" path="res://Art/Characters/Main/mc_falling_1.png" id="4_vrgb2"]
+[ext_resource type="Texture2D" uid="uid://cfb3dxph5novg" path="res://Art/Characters/Main/mc_falling_2.png" id="5_ppw13"]
+[ext_resource type="Texture2D" uid="uid://rcs8xbfild0f" path="res://Art/Characters/Main/mc_falling_3.png" id="6_coo17"]
+[ext_resource type="Texture2D" uid="uid://5bbii05wko77" path="res://Art/Characters/Main/mc_idle_0.png" id="7_ljvmi"]
+[ext_resource type="Texture2D" uid="uid://ct0kfgwxe24ko" path="res://Art/Characters/Main/mc_idle_1.png" id="8_r8hjx"]
+[ext_resource type="Texture2D" uid="uid://blbt317gt7k03" path="res://Art/Characters/Main/mc_idle_2.png" id="9_t4rl4"]
+[ext_resource type="Texture2D" uid="uid://baxkhb28al5d7" path="res://Art/Characters/Main/mc_idle_3.png" id="10_3wbaw"]
+[ext_resource type="Texture2D" uid="uid://dhdniti16hw4a" path="res://Art/Characters/Main/mc_jumping_0.png" id="11_5whae"]
+[ext_resource type="Texture2D" uid="uid://c5wcgkxnomc1x" path="res://Art/Characters/Main/mc_stillframe_0.png" id="12_nvo7h"]
+[ext_resource type="Texture2D" uid="uid://b8fp10rmkl1jk" path="res://Art/Characters/Main/mc_walking_0.png" id="13_lmacn"]
+[ext_resource type="Texture2D" uid="uid://cortg22r8al7w" path="res://Art/Characters/Main/mc_walking_1.png" id="14_h82m6"]
+[ext_resource type="Texture2D" uid="uid://bv25xej8brf0v" path="res://Art/Characters/Main/mc_walking_2.png" id="15_2rthi"]
+[ext_resource type="Texture2D" uid="uid://f0rtc0iueaas" path="res://Art/Characters/Main/mc_walking_3.png" id="16_pibum"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("1_3jb2c")
+}, {
+"duration": 0.5,
+"texture": ExtResource("2_xcgu6")
+}, {
+"duration": 0.5,
+"texture": ExtResource("1_3jb2c")
+}, {
+"duration": 0.5,
+"texture": ExtResource("2_xcgu6")
+}],
+"loop": true,
+"name": &"ducking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("3_nllfi")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_vrgb2")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_ppw13")
+}, {
+"duration": 0.5,
+"texture": ExtResource("6_coo17")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("7_ljvmi")
+}, {
+"duration": 3.0,
+"texture": ExtResource("8_r8hjx")
+}, {
+"duration": 3.0,
+"texture": ExtResource("9_t4rl4")
+}, {
+"duration": 3.0,
+"texture": ExtResource("10_3wbaw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_5whae")
+}],
+"loop": true,
+"name": &"jumping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_nvo7h")
+}],
+"loop": true,
+"name": &"stillframe",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_lmacn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_h82m6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2rthi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_pibum")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]

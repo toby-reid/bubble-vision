@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4ms271fgwh8q"
-path="res://.godot/imported/TitleScreenPlaceholder.png-41947e45bcf089867025197feb28ee19.ctex"
+uid="uid://ekep2pbdkydp"
+path="res://.godot/imported/evil_platform_r.png-befbe4838a645764ec30b1408dcf66b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/TitleScreenPlaceholder.png"
-dest_files=["res://.godot/imported/TitleScreenPlaceholder.png-41947e45bcf089867025197feb28ee19.ctex"]
+source_file="res://Art/Environment/Platforms/evil_platform_r.png"
+dest_files=["res://.godot/imported/evil_platform_r.png-befbe4838a645764ec30b1408dcf66b4.ctex"]
 
 [params]
 

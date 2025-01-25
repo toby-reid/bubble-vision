@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4ms271fgwh8q"
-path="res://.godot/imported/TitleScreenPlaceholder.png-41947e45bcf089867025197feb28ee19.ctex"
+uid="uid://6rbxaovsao5y"
+path="res://.godot/imported/spikes.png-50090619fa87b1b051eaac230454b1a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/TitleScreenPlaceholder.png"
-dest_files=["res://.godot/imported/TitleScreenPlaceholder.png-41947e45bcf089867025197feb28ee19.ctex"]
+source_file="res://Art/Environment/Hazards/spikes.png"
+dest_files=["res://.godot/imported/spikes.png-50090619fa87b1b051eaac230454b1a4.ctex"]
 
 [params]
 
