@@ -16,6 +16,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcq76"]
 size = Vector2(5.5, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_45reg"]
+shader = ExtResource("8_ri6ld")
+shader_parameter/mask_offset = null
+shader_parameter/mask_scale = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc6lr"]
+size = Vector2(176.032, 119.105)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_paf6x"]
 shader = ExtResource("3_fscco")
 shader_parameter/mask_offset = null
@@ -25,14 +33,6 @@ shader_parameter/mask_scale = null
 size = Vector2(240, 40)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_usck8"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_45reg"]
-shader = ExtResource("8_ri6ld")
-shader_parameter/mask_offset = null
-shader_parameter/mask_scale = null
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc6lr"]
-size = Vector2(176.032, 119.105)
 
 [node name="Node2D" type="Node2D"]
 
@@ -48,35 +48,6 @@ texture = ExtResource("1_i8khd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(2.25, 0)
 shape = SubResource("RectangleShape2D_mcq76")
-
-[node name="HappyWorld" type="StaticBody2D" parent="."]
-material = SubResource("ShaderMaterial_paf6x")
-position = Vector2(80, 180)
-disable_mode = 1
-script = ExtResource("3_ujjvb")
-
-[node name="SmbAlt" type="Sprite2D" parent="HappyWorld"]
-position = Vector2(80, 7.62939e-06)
-scale = Vector2(0.211268, 0.0625)
-texture = ExtResource("3_lgecu")
-script = ExtResource("6_q1lco")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HappyWorld"]
-position = Vector2(80, 0)
-shape = SubResource("RectangleShape2D_qmcqc")
-
-[node name="Bubble" type="CharacterBody2D" parent="."]
-position = Vector2(160, 120)
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("4_vj8e8")
-
-[node name="TestCircle" type="Sprite2D" parent="Bubble"]
-texture = ExtResource("5_ooh63")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubble"]
-scale = Vector2(2.082, 2)
-shape = SubResource("CircleShape2D_usck8")
 
 [node name="EvilWorld" type="StaticBody2D" parent="."]
 material = SubResource("ShaderMaterial_45reg")
@@ -94,12 +65,43 @@ script = ExtResource("12_t6chf")
 position = Vector2(73.3466, 0)
 shape = SubResource("RectangleShape2D_tc6lr")
 
+[node name="HappyWorld" type="StaticBody2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_paf6x")
+position = Vector2(80, 180)
+disable_mode = 1
+script = ExtResource("3_ujjvb")
+
+[node name="SmbAlt" type="Sprite2D" parent="HappyWorld"]
+position = Vector2(80, 7.62939e-06)
+scale = Vector2(0.211268, 0.0625)
+texture = ExtResource("3_lgecu")
+script = ExtResource("6_q1lco")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HappyWorld"]
+position = Vector2(80, 0)
+shape = SubResource("RectangleShape2D_qmcqc")
+
+[node name="Bubble" type="CharacterBody2D" parent="."]
+position = Vector2(160, 160)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_vj8e8")
+
+[node name="TestCircle" type="Sprite2D" parent="Bubble"]
+texture = ExtResource("5_ooh63")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubble"]
+scale = Vector2(2.082, 2)
+shape = SubResource("CircleShape2D_usck8")
+
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 size = Vector2i(320, 240)
+render_target_update_mode = 4
 
 [node name="Bubble" type="CharacterBody2D" parent="SubViewport"]
-position = Vector2(320, 240)
+position = Vector2(160, 160)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_vj8e8")
