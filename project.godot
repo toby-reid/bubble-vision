@@ -184,6 +184,25 @@ aim={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Default (Unused)"
+2d_navigation/layer_1="Default (Unused)"
+2d_physics/layer_2="PLayer"
+2d_navigation/layer_2="PLayer"
+2d_physics/layer_3="Terrain"
+2d_navigation/layer_3="Terrain"
+2d_physics/layer_4="Bubble Vision"
+2d_navigation/layer_4="Bubble Vision"
+2d_physics/layer_5="Enemies & NPCs"
+2d_navigation/layer_5="Enemies & NPCs"
+2d_physics/layer_6="Player Projectiles"
+2d_navigation/layer_6="Player Projectiles"
+2d_physics/layer_7="Enemy Projectiles"
+2d_navigation/layer_7="Enemy Projectiles"
+2d_physics/layer_8="Transcendant"
+2d_navigation/layer_8="Transcendant"
+
 [physics]
 
 2d/default_gravity=10.0
