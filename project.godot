@@ -29,6 +29,10 @@ window/stretch/scale_mode="integer"
 
 project/assembly_name="Bubble Vision"
 
+[global_group]
+
+Player="Used to quickly find the player"
+
 [input]
 
 ui_left={
@@ -179,6 +183,25 @@ aim={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":3,"axis_value":1.0,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Default (Unused)"
+2d_navigation/layer_1="Default (Unused)"
+2d_physics/layer_2="PLayer"
+2d_navigation/layer_2="PLayer"
+2d_physics/layer_3="Terrain"
+2d_navigation/layer_3="Terrain"
+2d_physics/layer_4="Bubble Vision"
+2d_navigation/layer_4="Bubble Vision"
+2d_physics/layer_5="Enemies & NPCs"
+2d_navigation/layer_5="Enemies & NPCs"
+2d_physics/layer_6="Player Projectiles"
+2d_navigation/layer_6="Player Projectiles"
+2d_physics/layer_7="Enemy Projectiles"
+2d_navigation/layer_7="Enemy Projectiles"
+2d_physics/layer_8="Transcendant"
+2d_navigation/layer_8="Transcendant"
 
 [physics]
 
