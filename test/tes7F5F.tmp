@@ -1,22 +1,20 @@
-[gd_scene load_steps=19 format=3 uid="uid://6gfiki3d8ewc"]
+[gd_scene load_steps=17 format=3 uid="uid://6gfiki3d8ewc"]
 
 [ext_resource type="Script" path="res://test/test_stock_man_body.gd" id="1_2qulw"]
 [ext_resource type="Texture2D" uid="uid://3vwogm65xuh" path="res://test/stock_man.jpg" id="1_i8khd"]
 [ext_resource type="Texture2D" uid="uid://buo6k8gfhh480" path="res://test/smb_alt.png" id="3_lgecu"]
-[ext_resource type="Script" path="res://test/bubble_bubble.gd" id="4_vj8e8"]
+[ext_resource type="Script" path="res://test/test_negative_circle.gd" id="4_vj8e8"]
 [ext_resource type="Texture2D" uid="uid://q5q5x7op43kl" path="res://test/test_circle.png" id="5_ooh63"]
-[ext_resource type="Script" path="res://test/bubble_imitator_player.gd" id="6_fr7ej"]
 [ext_resource type="Script" path="res://test/masking_viewport.gd" id="7_8vgrb"]
-[ext_resource type="Script" path="res://test/bubble_imitator_player_sprite.gd" id="7_ffe4s"]
 [ext_resource type="Script" path="res://test/masking_sprite_happy.gd" id="8_d3b51"]
 [ext_resource type="Texture2D" uid="uid://crl8lnkhc6tsj" path="res://test/test_evil_world.webp" id="8_o8cot"]
 [ext_resource type="Shader" path="res://test/test_evil_world.gdshader" id="8_ri6ld"]
 [ext_resource type="Script" path="res://test/masking_sprite_evil.gd" id="12_t6chf"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_usck8"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcq76"]
 size = Vector2(5.5, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_usck8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f2txg"]
 
@@ -32,34 +30,31 @@ size = Vector2(176.032, 119.105)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="PlayerCharacter" type="Node2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-64, 48)
+script = ExtResource("1_2qulw")
 
-[node name="Bubble" type="CharacterBody2D" parent="PlayerCharacter"]
-position = Vector2(80, -80)
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(224, 52)
+scale = Vector2(0.0980391, 0.0980391)
+texture = ExtResource("1_i8khd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(2.25, 0)
+shape = SubResource("RectangleShape2D_mcq76")
+
+[node name="Bubble" type="CharacterBody2D" parent="."]
+position = Vector2(160, 160)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_vj8e8")
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerCharacter/Bubble"]
-scale = Vector2(2, 2)
+[node name="TestCircle" type="Sprite2D" parent="Bubble"]
 texture = ExtResource("5_ooh63")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter/Bubble"]
-scale = Vector2(4, 4)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubble"]
+scale = Vector2(2.082, 2)
 shape = SubResource("CircleShape2D_usck8")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="PlayerCharacter"]
-position = Vector2(80, -80)
-script = ExtResource("1_2qulw")
-
-[node name="Sprite2D" type="Sprite2D" parent="PlayerCharacter/CharacterBody2D"]
-position = Vector2(-1.52588e-05, -3.05176e-05)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("1_i8khd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter/CharacterBody2D"]
-position = Vector2(2.25, 0)
-shape = SubResource("RectangleShape2D_mcq76")
 
 [node name="MarioWorlds" type="Node2D" parent="."]
 
@@ -73,11 +68,10 @@ script = ExtResource("7_8vgrb")
 position = Vector2(120, 0)
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("6_fr7ej")
+script = ExtResource("4_vj8e8")
 
-[node name="Sprite2D" type="Sprite2D" parent="MarioWorlds/SubViewport/Bubble"]
+[node name="TestCircle" type="Sprite2D" parent="MarioWorlds/SubViewport/Bubble"]
 texture = ExtResource("5_ooh63")
-script = ExtResource("7_ffe4s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MarioWorlds/SubViewport/Bubble"]
 scale = Vector2(2.082, 2)
@@ -105,7 +99,7 @@ position = Vector2(60, 180)
 scale = Vector2(1.36339, 0.335838)
 
 [node name="Sprite2D" type="Sprite2D" parent="MarioWorlds/EvilWorld"]
-position = Vector2(73.3466, 0)
+position = Vector2(73.3467, 0)
 scale = Vector2(0.687625, 0.531719)
 texture = ExtResource("8_o8cot")
 script = ExtResource("12_t6chf")
