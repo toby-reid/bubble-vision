@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cdxjb5bjyd7h4" path="res://Art/TestTile.png" id="1_e1s15"]
 [ext_resource type="PackedScene" uid="uid://citspel7gd1jf" path="res://Scenes/Player.tscn" id="2_rinpp"]
 [ext_resource type="PackedScene" uid="uid://caf2robhecctc" path="res://Scenes/Powerup.tscn" id="2_xwyp7"]
-[ext_resource type="Script" path="res://Scripts/player.gd" id="4_wigsv"]
+[ext_resource type="PackedScene" uid="uid://betucifsraj3a" path="res://Scenes/enemy.tscn" id="5_pda5a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1c8k"]
 texture = ExtResource("1_e1s15")
@@ -14,7 +14,7 @@ texture_region_size = Vector2i(20, 20)
 [sub_resource type="TileSet" id="TileSet_wpv72"]
 tile_size = Vector2i(20, 20)
 physics_layer_0/collision_layer = 4
-physics_layer_0/collision_mask = 2
+physics_layer_0/collision_mask = 10
 sources/0 = SubResource("TileSetAtlasSource_g1c8k")
 
 [node name="Level1" type="Node2D"]
@@ -26,6 +26,8 @@ tile_set = SubResource("TileSet_wpv72")
 [node name="Powerup" parent="." instance=ExtResource("2_xwyp7")]
 position = Vector2(130, 163)
 
-[node name="Player" parent="." instance=ExtResource("2_rinpp")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("2_rinpp")]
 position = Vector2(12, 176)
-script = ExtResource("4_wigsv")
+
+[node name="Enemy" parent="." instance=ExtResource("5_pda5a")]
+position = Vector2(247, 177)

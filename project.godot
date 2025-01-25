@@ -29,6 +29,10 @@ window/stretch/scale_mode="integer"
 
 project/assembly_name="Bubble Vision"
 
+[global_group]
+
+Player="Used to quickly find the player"
+
 [input]
 
 ui_left={
