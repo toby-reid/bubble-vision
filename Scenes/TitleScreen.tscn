@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://brct6x1ippeto"]
+
+[node name="TitleScreen" type="MarginContainer"]
