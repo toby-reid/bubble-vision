@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://brct6x1ippeto"]
 
 [ext_resource type="Texture2D" uid="uid://b8w5nubwg1oi5" path="res://Art/TitleScreenPlaceholder.png" id="1_f1yp1"]
-[ext_resource type="Script" path="res://Scenes/menu.gd" id="2_x7sno"]
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="2_x7sno"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_roioq"]
 font_size = 19
@@ -42,14 +42,26 @@ script = ExtResource("2_x7sno")
 
 [node name="Start" type="Button" parent="VBoxContainer/Menu"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Options")
+focus_next = NodePath("../Options")
+focus_previous = NodePath("../Quit")
 text = "Start"
 
 [node name="Options" type="Button" parent="VBoxContainer/Menu"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Start")
 text = "Options"
 
 [node name="Quit" type="Button" parent="VBoxContainer/Menu"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Options")
+focus_neighbor_bottom = NodePath("../Start")
+focus_next = NodePath("../Start")
+focus_previous = NodePath("../Options")
 text = "Quit
 "
 

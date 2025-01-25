@@ -1,6 +1,12 @@
 extends MarginContainer
 
 
+@onready var continue_button: Button = $VBoxContainer/HBoxContainer/Continue
+
+func _ready() -> void:
+	continue_button.grab_focus()
+
+
 func _on_continue_pressed() -> void:
 	# Get scene they died on or a checkpoint
 	# Reload the scene and respawn

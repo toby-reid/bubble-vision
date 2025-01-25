@@ -1,8 +1,10 @@
 extends VBoxContainer
 
+@onready var start_button: Button = $Start
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	start_button.grab_focus()
 	pass # Replace with function body.
 
 
