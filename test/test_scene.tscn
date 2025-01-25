@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://6gfiki3d8ewc"]
+
+[ext_resource type="Script" path="res://test/test_stock_man_body.gd" id="1_2qulw"]
+[ext_resource type="Texture2D" uid="uid://3vwogm65xuh" path="res://test/stock_man.jpg" id="1_i8khd"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-181, -160)
+script = ExtResource("1_2qulw")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(651, 542)
+scale = Vector2(0.245098, 0.245098)
+texture = ExtResource("1_i8khd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
