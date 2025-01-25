@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4ms271fgwh8q"
-path="res://.godot/imported/TitleScreenPlaceholder.png-41947e45bcf089867025197feb28ee19.ctex"
+uid="uid://baxkhb28al5d7"
+path="res://.godot/imported/mc_idle_3.png-78d1d0ac7a70820018a4f84ab10d7bef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/TitleScreenPlaceholder.png"
-dest_files=["res://.godot/imported/TitleScreenPlaceholder.png-41947e45bcf089867025197feb28ee19.ctex"]
+source_file="res://Art/Characters/Main/mc_idle_3.png"
+dest_files=["res://.godot/imported/mc_idle_3.png-78d1d0ac7a70820018a4f84ab10d7bef.ctex"]
 
 [params]
 

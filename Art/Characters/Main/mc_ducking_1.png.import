@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4ms271fgwh8q"
-path="res://.godot/imported/TitleScreenPlaceholder.png-41947e45bcf089867025197feb28ee19.ctex"
+uid="uid://dg80ogbi2tvrm"
+path="res://.godot/imported/mc_ducking_1.png-84eefcb8b181e4c6ce01efdcd7735d02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/TitleScreenPlaceholder.png"
-dest_files=["res://.godot/imported/TitleScreenPlaceholder.png-41947e45bcf089867025197feb28ee19.ctex"]
+source_file="res://Art/Characters/Main/mc_ducking_1.png"
+dest_files=["res://.godot/imported/mc_ducking_1.png-84eefcb8b181e4c6ce01efdcd7735d02.ctex"]
 
 [params]
 
