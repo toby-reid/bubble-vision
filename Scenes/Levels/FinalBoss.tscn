@@ -1,3 +1,118 @@
-[gd_scene format=3 uid="uid://b5uht122i2c7f"]
+[gd_scene load_steps=11 format=4 uid="uid://bdltagqh7r3tm"]
 
-[node name="FinalBoss" type="Node2D"]
+[ext_resource type="TileSet" uid="uid://bxyfthksffytp" path="res://Art/Environment/tileset.tres" id="1_76j7o"]
+[ext_resource type="Script" path="res://Scripts/PlayerCharacter/character_move.gd" id="2_x0wam"]
+[ext_resource type="SpriteFrames" uid="uid://crxouodoepki2" path="res://Art/Characters/Main/mc_animations.tres" id="3_5xv5b"]
+[ext_resource type="Script" path="res://Scripts/Meta/to_room.gd" id="4_bejb3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l64jw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nt8ru"]
+size = Vector2(9, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ls6lh"]
+size = Vector2(6, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_daxxm"]
+size = Vector2(21.4601, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jaomt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oq8rm"]
+size = Vector2(20, 40)
+
+[node name="Cell" type="Node2D"]
+
+[node name="WorldBorder" type="Node2D" parent="."]
+position = Vector2(-140.2, 63.1588)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WorldBorder"]
+position = Vector2(0, -7.62939e-06)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder/StaticBody2D"]
+scale = Vector2(1, 0.5)
+shape = SubResource("WorldBoundaryShape2D_l64jw")
+
+[node name="TileMap" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
+tile_map_data = PackedByteArray("AAACAAIAAAACAAgAAAACAAMAAAACAAgAAAACAAQAAAACAAgAAAACAAUAAAACAAgAAAACAAYAAAACAAgAAAACAAcAAAACAAgAAAACAAgAAAACAAgAAAACAAkAAAACAAgAAAADAAIAAAACAAgAAAADAAMAAAACAAgAAAADAAQAAAACAAgAAAADAAUAAAACAAgAAAADAAYAAAACAAgAAAADAAcAAAACAAgAAAADAAgAAAACAAgAAAADAAkAAAACAAgAAAAEAAIAAAACAAgAAAAEAAMAAAACAAgAAAAEAAQAAAACAAgAAAAEAAUAAAACAAgAAAAEAAYAAAACAAgAAAAEAAcAAAACAAgAAAAEAAgAAAACAAgAAAAEAAkAAAACAAgAAAAFAAIAAAACAAgAAAAFAAMAAAACAAgAAAAFAAQAAAACAAgAAAAFAAUAAAACAAgAAAAFAAYAAAACAAgAAAAFAAcAAAACAAgAAAAFAAgAAAACAAgAAAAFAAkAAAACAAgAAAAGAAIAAAACAAgAAAAGAAMAAAACAAgAAAAGAAQAAAACAAgAAAAGAAUAAAACAAgAAAAGAAYAAAACAAgAAAAGAAcAAAACAAgAAAAGAAgAAAACAAgAAAAGAAkAAAACAAgAAAAHAAIAAAACAAgAAAAHAAMAAAACAAgAAAAHAAQAAAACAAgAAAAHAAUAAAACAAgAAAAHAAYAAAACAAgAAAAHAAcAAAACAAgAAAAHAAgAAAACAAgAAAAHAAkAAAACAAgAAAAIAAIAAAACAAgAAAAIAAMAAAACAAgAAAAIAAQAAAACAAgAAAAIAAUAAAACAAgAAAAIAAYAAAACAAgAAAAIAAcAAAACAAgAAAAIAAgAAAACAAgAAAAIAAkAAAACAAgAAAAJAAIAAAACAAgAAAAJAAMAAAACAAgAAAAJAAQAAAACAAgAAAAJAAUAAAACAAgAAAAJAAYAAAACAAgAAAAJAAcAAAACAAgAAAAJAAgAAAACAAgAAAAJAAkAAAACAAgAAAAKAAIAAAACAAgAAAAKAAMAAAACAAgAAAAKAAQAAAACAAgAAAAKAAUAAAACAAgAAAAKAAYAAAACAAgAAAAKAAcAAAACAAgAAAAKAAgAAAACAAgAAAAKAAkAAAACAAgAAAALAAIAAAACAAgAAAALAAMAAAACAAgAAAALAAQAAAACAAgAAAALAAUAAAACAAgAAAALAAYAAAACAAgAAAALAAcAAAACAAgAAAALAAgAAAACAAgAAAALAAkAAAACAAgAAAAMAAIAAAACAAgAAAAMAAMAAAACAAgAAAAMAAQAAAACAAgAAAAMAAUAAAACAAgAAAAMAAYAAAACAAgAAAAMAAcAAAACAAgAAAAMAAgAAAACAAgAAAAMAAkAAAACAAgAAAANAAIAAAACAAgAAAANAAMAAAACAAgAAAANAAQAAAACAAgAAAANAAUAAAACAAgAAAANAAYAAAACAAgAAAANAAcAAAACAAgAAAANAAgAAAACAAgAAAANAAkAAAACAAgAAAABAAEAAAACAAgAAAABAAIAAAACAAgAAAABAAMAAAACAAgAAAABAAQAAAACAAgAAAABAAUAAAACAAgAAAABAAYAAAACAAgAAAABAAcAAAACAAgAAAABAAgAAAACAAgAAAABAAkAAAACAAgAAAACAAEAAAACAAgAAAADAAEAAAACAAgAAAAEAAEAAAACAAgAAAAFAAEAAAACAAgAAAAGAAEAAAACAAgAAAAHAAEAAAACAAgAAAAIAAEAAAACAAgAAAAJAAEAAAACAAgAAAAKAAEAAAACAAgAAAALAAEAAAACAAgAAAAMAAEAAAACAAgAAAANAAEAAAACAAgAAAAOAAEAAAACAAgAAAAOAAIAAAACAAgAAAAOAAMAAAACAAgAAAAOAAQAAAACAAgAAAAOAAUAAAACAAgAAAAOAAYAAAACAAgAAAAOAAcAAAACAAgAAAAOAAgAAAACAAgAAAAOAAkAAAACAAgAAAABAAoAAAABAAgAAAACAAoAAAABAAgAAAADAAoAAAABAAgAAAAEAAoAAAABAAgAAAAFAAoAAAABAAgAAAAGAAoAAAABAAgAAAAHAAoAAAABAAgAAAAIAAoAAAABAAgAAAAJAAoAAAABAAgAAAAKAAoAAAABAAgAAAALAAoAAAABAAgAAAAMAAoAAAABAAgAAAANAAoAAAABAAgAAAAOAAoAAAABAAgAAAAPAAoAAAABAAgAAAAPAAkAAAADAAgAAAAPAAgAAAADAAgAAAAAAAAAAAAFAAAAAAAPAAAAAAAFAAAAAFAAAAsAAAAFAAAAAGABAAsAAAAFAAMAAGACAAsAAAAFAAMAAGADAAsAAAAFAAMAAGAEAAsAAAAFAAMAAGAFAAsAAAAFAAMAAGAGAAsAAAAFAAMAAGAHAAsAAAAFAAMAAGAIAAsAAAAFAAMAAGAJAAsAAAAFAAMAAGAKAAsAAAAFAAMAAGALAAsAAAAFAAMAAGAMAAsAAAAFAAMAAGANAAsAAAAFAAMAAGAOAAsAAAAFAAMAAGAPAAsAAAAFAAEAAGAAAAoAAAAFAAMAAAAAAAkAAAAFAAMAAAAAAAgAAAAFAAMAAAAAAAcAAAAFAAMAAAAAAAYAAAAFAAMAAAAAAAUAAAAFAAMAAAAAAAQAAAAFAAMAAAAAAAMAAAAFAAMAAAAAAAIAAAAFAAMAAAAAAAEAAAAFAAMAAAABAAAAAAAFAAMAAFACAAAAAAAFAAMAAFADAAAAAAAFAAMAAFAEAAAAAAAFAAMAAFAFAAAAAAAFAAMAAFAGAAAAAAAFAAMAAFAHAAAAAAAFAAMAAFAIAAAAAAAFAAMAAFAJAAAAAAAFAAMAAFAKAAAAAAAFAAMAAFALAAAAAAAFAAMAAFAMAAAAAAAFAAMAAFANAAAAAAAFAAMAAFAOAAAAAAAFAAMAAFAPAAEAAAAFAAMAADAPAAIAAAAFAAMAADAPAAMAAAAFAAMAADAPAAQAAAAFAAMAADAPAAUAAAAFAAMAADAPAAYAAAAFAAMAADAPAAcAAAAFAAQAADA=")
+tile_set = ExtResource("1_76j7o")
+
+[node name="BackgroundPlate" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundPlate"]
+z_index = -1
+offset_right = 320.0
+offset_bottom = 240.0
+color = Color(0, 0, 0, 1)
+
+[node name="PlayerCharacter" type="Node2D" parent="."]
+position = Vector2(160, 180)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="PlayerCharacter"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("2_x0wam")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerCharacter/CharacterBody2D"]
+position = Vector2(0, 3)
+sprite_frames = ExtResource("3_5xv5b")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter/CharacterBody2D"]
+position = Vector2(1, 9)
+shape = SubResource("RectangleShape2D_nt8ru")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerCharacter/CharacterBody2D"]
+position = Vector2(1, -5)
+shape = SubResource("RectangleShape2D_ls6lh")
+
+[node name="BuildingStructure" type="Node2D" parent="."]
+
+[node name="Floor" type="Node2D" parent="BuildingStructure"]
+position = Vector2(160, 210)
+scale = Vector2(13.9614, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BuildingStructure/Floor"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingStructure/Floor/StaticBody2D"]
+position = Vector2(0.644633, 0)
+shape = SubResource("RectangleShape2D_daxxm")
+
+[node name="Walls" type="Node2D" parent="BuildingStructure"]
+position = Vector2(10, 110)
+scale = Vector2(1, 8.96)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BuildingStructure/Walls"]
+scale = Vector2(1, 1.23246)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingStructure/Walls/StaticBody2D"]
+shape = SubResource("RectangleShape2D_jaomt")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="BuildingStructure/Walls"]
+position = Vector2(300, -3.68304)
+scale = Vector2(1, 0.911749)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingStructure/Walls/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_jaomt")
+
+[node name="NextRoom" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="NextRoom"]
+position = Vector2(320, 180)
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("4_bejb3")
+metadata/next_room = "Level1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextRoom/Area2D"]
+shape = SubResource("RectangleShape2D_oq8rm")

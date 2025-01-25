@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://iq7b6tq8dpta"]
+[gd_scene load_steps=37 format=4 uid="uid://iq7b6tq8dpta"]
 
 [ext_resource type="Script" path="res://Scripts/BubbleVision/masking_viewport.gd" id="1_877e7"]
 [ext_resource type="Shader" path="res://Scripts/BubbleVision/evil_world.gdshader" id="1_vg73a"]
@@ -15,6 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://bgqffjycjraga" path="res://Art/Extras/level1_background_evil.png" id="8_mxktq"]
 [ext_resource type="Script" path="res://Scripts/BubbleVision/masking_sprite_happy.gd" id="8_oblpe"]
 [ext_resource type="Script" path="res://Scripts/BubbleVision/masking_sprite_evil.gd" id="10_ih1p8"]
+[ext_resource type="SpriteFrames" uid="uid://c8khs4w5a05db" path="res://Art/Characters/Enemies/PsychePatient/patient_animations.tres" id="16_f7luk"]
+[ext_resource type="Script" path="res://Scripts/BubbleVision/masking_animatedsprite_happy.gd" id="17_ma8nn"]
+[ext_resource type="SpriteFrames" uid="uid://bgfi3g32gqkqr" path="res://Art/Characters/Enemies/Mernster/mernster_animations.tres" id="17_q8j3i"]
+[ext_resource type="Script" path="res://Scripts/BubbleVision/masking_animatedsprite_evil.gd" id="19_pvufj"]
+[ext_resource type="Script" path="res://Scripts/Hazards/secretly_friendly.gd" id="20_6gy0t"]
+[ext_resource type="Texture2D" uid="uid://6rbxaovsao5y" path="res://Art/Environment/Hazards/spikes.png" id="20_ww1a8"]
+[ext_resource type="Script" path="res://Scripts/Hazards/outwardly_deadly.gd" id="22_w2x0b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l885m"]
 
@@ -26,7 +33,7 @@ shader = ExtResource("1_vg73a")
 shader_parameter/mask_offset = null
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d11qx"]
-size = Vector2(626.008, 211.776)
+size = Vector2(19.504, 10.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_clgax"]
 shader = ExtResource("1_vg73a")
@@ -51,6 +58,12 @@ size = Vector2(21.4601, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_28qf4"]
 size = Vector2(20, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0ewq"]
+size = Vector2(12, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjkth"]
+size = Vector2(12, 32)
 
 [node name="Level1" type="Node2D"]
 
@@ -219,3 +232,326 @@ metadata/next_room = "FinalBoss"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NextRoom/Area2D"]
 shape = SubResource("RectangleShape2D_28qf4")
+
+[node name="Patient" type="Node2D" parent="."]
+position = Vector2(441, 203)
+
+[node name="HappyWorld" type="CharacterBody2D" parent="Patient"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Patient/HappyWorld"]
+sprite_frames = ExtResource("16_f7luk")
+animation = &"idle"
+script = ExtResource("17_ma8nn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Patient/HappyWorld"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_k0ewq")
+
+[node name="EvilWorld" type="CharacterBody2D" parent="Patient"]
+collision_layer = 128
+collision_mask = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Patient/EvilWorld"]
+position = Vector2(0, -2)
+sprite_frames = ExtResource("17_q8j3i")
+animation = &"idle"
+script = ExtResource("19_pvufj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Patient/EvilWorld"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_sjkth")
+
+[node name="SubViewport" type="SubViewport" parent="Patient"]
+transparent_bg = true
+size = Vector2i(240, 40)
+render_target_update_mode = 4
+script = ExtResource("1_877e7")
+
+[node name="Bubble" type="CharacterBody2D" parent="Patient/SubViewport"]
+position = Vector2(120, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xt3v6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Patient/SubViewport/Bubble"]
+texture = ExtResource("5_2gdfs")
+script = ExtResource("6_vc36w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Patient/SubViewport/Bubble"]
+scale = Vector2(2.082, 2)
+shape = SubResource("CircleShape2D_l885m")
+
+[node name="Spikes" type="Node2D" parent="."]
+position = Vector2(80, -120)
+
+[node name="SubViewport" type="SubViewport" parent="Spikes"]
+transparent_bg = true
+size = Vector2i(240, 40)
+render_target_update_mode = 4
+script = ExtResource("1_877e7")
+
+[node name="Bubble" type="CharacterBody2D" parent="Spikes/SubViewport"]
+position = Vector2(120, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xt3v6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/SubViewport/Bubble"]
+texture = ExtResource("5_2gdfs")
+script = ExtResource("6_vc36w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/SubViewport/Bubble"]
+scale = Vector2(2.082, 2)
+shape = SubResource("CircleShape2D_l885m")
+
+[node name="EvilWorld" type="Area2D" parent="Spikes"]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("20_6gy0t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes/EvilWorld"]
+position = Vector2(310, 335)
+texture = ExtResource("20_ww1a8")
+script = ExtResource("10_ih1p8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/EvilWorld"]
+position = Vector2(310.248, 335.25)
+shape = SubResource("RectangleShape2D_d11qx")
+
+[node name="Spikes2" type="Node2D" parent="."]
+position = Vector2(60, -120)
+
+[node name="SubViewport" type="SubViewport" parent="Spikes2"]
+transparent_bg = true
+size = Vector2i(240, 40)
+render_target_update_mode = 4
+script = ExtResource("1_877e7")
+
+[node name="Bubble" type="CharacterBody2D" parent="Spikes2/SubViewport"]
+position = Vector2(120, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xt3v6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes2/SubViewport/Bubble"]
+texture = ExtResource("5_2gdfs")
+script = ExtResource("6_vc36w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes2/SubViewport/Bubble"]
+scale = Vector2(2.082, 2)
+shape = SubResource("CircleShape2D_l885m")
+
+[node name="EvilWorld" type="Area2D" parent="Spikes2"]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("20_6gy0t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes2/EvilWorld"]
+position = Vector2(310, 335)
+texture = ExtResource("20_ww1a8")
+script = ExtResource("10_ih1p8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes2/EvilWorld"]
+position = Vector2(310.248, 335.25)
+shape = SubResource("RectangleShape2D_d11qx")
+
+[node name="Spikes3" type="Node2D" parent="."]
+position = Vector2(40, -120)
+
+[node name="SubViewport" type="SubViewport" parent="Spikes3"]
+transparent_bg = true
+size = Vector2i(240, 40)
+render_target_update_mode = 4
+script = ExtResource("1_877e7")
+
+[node name="Bubble" type="CharacterBody2D" parent="Spikes3/SubViewport"]
+position = Vector2(120, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xt3v6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes3/SubViewport/Bubble"]
+texture = ExtResource("5_2gdfs")
+script = ExtResource("6_vc36w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes3/SubViewport/Bubble"]
+scale = Vector2(2.082, 2)
+shape = SubResource("CircleShape2D_l885m")
+
+[node name="EvilWorld" type="Area2D" parent="Spikes3"]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("20_6gy0t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes3/EvilWorld"]
+position = Vector2(310, 335)
+texture = ExtResource("20_ww1a8")
+script = ExtResource("10_ih1p8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes3/EvilWorld"]
+position = Vector2(310.248, 335.25)
+shape = SubResource("RectangleShape2D_d11qx")
+
+[node name="Spikes4" type="Node2D" parent="."]
+position = Vector2(20, -120)
+
+[node name="SubViewport" type="SubViewport" parent="Spikes4"]
+transparent_bg = true
+size = Vector2i(240, 40)
+render_target_update_mode = 4
+script = ExtResource("1_877e7")
+
+[node name="Bubble" type="CharacterBody2D" parent="Spikes4/SubViewport"]
+position = Vector2(120, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xt3v6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes4/SubViewport/Bubble"]
+texture = ExtResource("5_2gdfs")
+script = ExtResource("6_vc36w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes4/SubViewport/Bubble"]
+scale = Vector2(2.082, 2)
+shape = SubResource("CircleShape2D_l885m")
+
+[node name="EvilWorld" type="Area2D" parent="Spikes4"]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("20_6gy0t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes4/EvilWorld"]
+position = Vector2(310, 335)
+texture = ExtResource("20_ww1a8")
+script = ExtResource("10_ih1p8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes4/EvilWorld"]
+position = Vector2(310.248, 335.25)
+shape = SubResource("RectangleShape2D_d11qx")
+
+[node name="Spikes5" type="Node2D" parent="."]
+position = Vector2(-20, -120)
+
+[node name="SubViewport" type="SubViewport" parent="Spikes5"]
+transparent_bg = true
+size = Vector2i(240, 40)
+render_target_update_mode = 4
+script = ExtResource("1_877e7")
+
+[node name="Bubble" type="CharacterBody2D" parent="Spikes5/SubViewport"]
+position = Vector2(120, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xt3v6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes5/SubViewport/Bubble"]
+texture = ExtResource("5_2gdfs")
+script = ExtResource("6_vc36w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes5/SubViewport/Bubble"]
+scale = Vector2(2.082, 2)
+shape = SubResource("CircleShape2D_l885m")
+
+[node name="EvilWorld" type="Area2D" parent="Spikes5"]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("20_6gy0t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes5/EvilWorld"]
+position = Vector2(310, 335)
+texture = ExtResource("20_ww1a8")
+script = ExtResource("10_ih1p8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes5/EvilWorld"]
+position = Vector2(310.248, 335.25)
+shape = SubResource("RectangleShape2D_d11qx")
+
+[node name="Spikes6" type="Node2D" parent="."]
+position = Vector2(-40, -120)
+
+[node name="SubViewport" type="SubViewport" parent="Spikes6"]
+transparent_bg = true
+size = Vector2i(240, 40)
+render_target_update_mode = 4
+script = ExtResource("1_877e7")
+
+[node name="Bubble" type="CharacterBody2D" parent="Spikes6/SubViewport"]
+position = Vector2(120, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xt3v6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes6/SubViewport/Bubble"]
+texture = ExtResource("5_2gdfs")
+script = ExtResource("6_vc36w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes6/SubViewport/Bubble"]
+scale = Vector2(2.082, 2)
+shape = SubResource("CircleShape2D_l885m")
+
+[node name="EvilWorld" type="Area2D" parent="Spikes6"]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("20_6gy0t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes6/EvilWorld"]
+position = Vector2(310, 335)
+texture = ExtResource("20_ww1a8")
+script = ExtResource("10_ih1p8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes6/EvilWorld"]
+position = Vector2(310.248, 335.25)
+shape = SubResource("RectangleShape2D_d11qx")
+
+[node name="Spikes7" type="Node2D" parent="."]
+position = Vector2(-60, -120)
+
+[node name="SubViewport" type="SubViewport" parent="Spikes7"]
+transparent_bg = true
+size = Vector2i(240, 40)
+render_target_update_mode = 4
+script = ExtResource("1_877e7")
+
+[node name="Bubble" type="CharacterBody2D" parent="Spikes7/SubViewport"]
+position = Vector2(120, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_xt3v6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes7/SubViewport/Bubble"]
+texture = ExtResource("5_2gdfs")
+script = ExtResource("6_vc36w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes7/SubViewport/Bubble"]
+scale = Vector2(2.082, 2)
+shape = SubResource("CircleShape2D_l885m")
+
+[node name="EvilWorld" type="Area2D" parent="Spikes7"]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("20_6gy0t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes7/EvilWorld"]
+position = Vector2(310, 335)
+texture = ExtResource("20_ww1a8")
+script = ExtResource("10_ih1p8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes7/EvilWorld"]
+position = Vector2(310.248, 335.25)
+shape = SubResource("RectangleShape2D_d11qx")
+
+[node name="Spikes8" type="Node2D" parent="."]
+position = Vector2(0, -120)
+
+[node name="EvilWorld" type="Area2D" parent="Spikes8"]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("22_w2x0b")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes8/EvilWorld"]
+position = Vector2(310, 335)
+texture = ExtResource("20_ww1a8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes8/EvilWorld"]
+position = Vector2(310.248, 335.25)
+shape = SubResource("RectangleShape2D_d11qx")
