@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://6gfiki3d8ewc"]
+[gd_scene load_steps=20 format=3 uid="uid://6gfiki3d8ewc"]
 
 [ext_resource type="Script" path="res://test/test_stock_man_body.gd" id="1_2qulw"]
 [ext_resource type="Texture2D" uid="uid://3vwogm65xuh" path="res://test/stock_man.jpg" id="1_i8khd"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://crl8lnkhc6tsj" path="res://test/test_evil_world.webp" id="8_o8cot"]
 [ext_resource type="Shader" path="res://test/test_evil_world.gdshader" id="8_ri6ld"]
 [ext_resource type="Script" path="res://test/test_evil_world_sprite.gd" id="12_t6chf"]
+[ext_resource type="Script" path="res://test/sub_viewport.gd" id="13_c7aoe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcq76"]
 size = Vector2(5.5, 1)
@@ -41,7 +42,7 @@ position = Vector2(-64, 48)
 script = ExtResource("1_2qulw")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(224, 52)
+position = Vector2(0, -16)
 scale = Vector2(0.0980391, 0.0980391)
 texture = ExtResource("1_i8khd")
 
@@ -97,11 +98,12 @@ shape = SubResource("CircleShape2D_usck8")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
-size = Vector2i(240, 40)
+size = Vector2i(40, 40)
 render_target_update_mode = 4
+script = ExtResource("13_c7aoe")
 
 [node name="Bubble" type="CharacterBody2D" parent="SubViewport"]
-position = Vector2(120, 0)
+position = Vector2(160, 160)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_vj8e8")

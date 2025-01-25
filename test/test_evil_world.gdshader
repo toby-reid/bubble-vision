@@ -10,7 +10,7 @@ void vertex() {
 
 void fragment() {
     // Calculate UV for the mask texture
-    vec2 mask_uv = (UV - mask_offset) / mask_scale;
+	vec2 mask_uv = (UV - mask_offset) * vec2(mask_scale.x, mask_scale.y);
 
     // Sample the mask texture
     float mask_value = texture(mask_texture, mask_uv).r;
